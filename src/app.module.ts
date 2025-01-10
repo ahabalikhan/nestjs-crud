@@ -5,13 +5,16 @@ import { DataSource, DataSourceOptions } from 'typeorm';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import databaseConfig from './database/config/database.config';
 import { UserModule } from './user/user.module';
+import { QueueModule } from './queue/queue.module';
+import queueConfig from './queue/config/queue.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
     isGlobal: true,
     load: [
-      databaseConfig
+      databaseConfig,
+      queueConfig,
     ],
     envFilePath: ['.env'],
     }),
@@ -21,7 +24,8 @@ import { UserModule } from './user/user.module';
         return new DataSource(options).initialize();
       },
     }),
-    UserModule
+    UserModule,
+    QueueModule
   ],
   controllers: [],
   providers: [],
