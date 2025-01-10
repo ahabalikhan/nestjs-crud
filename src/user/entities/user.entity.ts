@@ -11,7 +11,7 @@ export class User {
     @Column({ unique: true })
     email: string;
 
-    @Index()
+    @Index() // This creates an index on the 'age' column to improve query performance for operations involving this column.
     @Column()
     age: number;
 }

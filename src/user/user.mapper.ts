@@ -11,7 +11,7 @@ export class UserMapper {
         return user;
     }
 
-    static toRetrieveDto(user: User): RetrieveUserDto {
+    static toDto(user: User): RetrieveUserDto {
         const createUserDto = new RetrieveUserDto();
         createUserDto.userId = user.userId;
         createUserDto.name = user.name;
@@ -19,12 +19,4 @@ export class UserMapper {
         createUserDto.age = user.age;
         return createUserDto;
     }
-    
-    static toCreateDto(user: User): CreateUserDto {
-      const createUserDto = new CreateUserDto();
-      createUserDto.name = user.name;
-      createUserDto.email = user.email;
-      createUserDto.age = user.age;
-      return createUserDto;
-  }
 }

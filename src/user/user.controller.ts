@@ -24,4 +24,12 @@ export class UserController {
     ) {
         return await this.userService.findAll(skip, take);
     }
+    
+    // For older than 18 years old users
+    @Get('older-than')
+    @ApiResponse({ type: RetrieveUserDto, isArray: true })
+    @HttpCode(HttpStatus.OK)
+    async findOlderThan(@Query('age') age: number) {
+        return await this.userService.findAllGreaterThanAgeOrderByName(age);
+    }
 }

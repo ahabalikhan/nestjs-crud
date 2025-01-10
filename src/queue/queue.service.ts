@@ -7,6 +7,7 @@ import { AddMessageQueueDto } from './dto/add-message-queue.dto';
 export class QueueService {
   constructor(@InjectQueue('message-queue') private readonly mailQueue: Queue) {}
 
+  // Add a new job to the message queue
   async addMessageJob(emailData: AddMessageQueueDto): Promise<void> {
     await this.mailQueue.add('send-message', emailData);
   }
